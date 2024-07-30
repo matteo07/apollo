@@ -1,60 +1,25 @@
-import { ApolloServer } from "@apollo/server";
+import { ApolloServer } from '@apollo/server';
 import { nextHandler } from '@lib/nextHandler';
+import type { Book } from '@lib/graphql/types';
+import { typeDefs } from '@lib/graphql/types';
+import { authorByIdResolver, bookByIdResolver, booksResolver } from '@lib/graphql/resolvers';
 
-type Book = {
-  id: number
-  title: string
-  author: string
-}
-
-const books: Book[] = [
-  {
-    id: 1,
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-  },
-  {
-    id: 2,
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-];
-
-// Construct a schema, using GraphQL schema language
-const typeDefs = `#graphql
-type Book {
-    id: Int
-    title: String
-    author: String
-}
-
-type Query {
-    hello: String
-    books: [Book]
-    book(id: Int): Book
-}
-`;
-
-type RootValue = unknown
-interface BookByIdArgument  {
-  id: number
-}
-
-const bookByIdResolver = (parent: RootValue, {id}: BookByIdArgument ): Book | null =>
-  ( books?.find(({ id: bookId }) => bookId === id ) ?? null)
 
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    hello: () => "Hello world!",
-    books: () => books,
-    book: bookByIdResolver
+    books: booksResolver,
+    book: bookByIdResolver,
+    author: authorByIdResolver
   },
+  Book: {
+    author: async (context: Book) => await authorByIdResolver(undefined, { id: context.author })
+  }
 };
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
+  resolvers
 });
 
 export default nextHandler(server);
