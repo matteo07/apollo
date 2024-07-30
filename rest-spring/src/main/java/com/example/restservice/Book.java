@@ -1,3 +1,4 @@
 package com.example.restservice;
 
-public record Book(long id, String author, String title) { }
+public record Book(long id, long author, String title) {
+}
