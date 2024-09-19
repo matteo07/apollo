@@ -1,39 +1,23 @@
 import type { NextPage } from 'next';
-import { gql, useQuery } from '@apollo/client';
-
-const QUERY = gql`
-    query Countries {
-        countries {
-            code
-            name
-            emoji
-        }
-    }
-`;
+import { useGetBookQuery } from '@lib/graphql/generated.types';
 
 
 const HomePage: NextPage = () => {
-  const { data, loading, error } = useQuery(QUERY);
+  const { data, loading, error } = useGetBookQuery({ variables: { bookId: 2 } });
 
+  console.log({ data, loading, error });
   if (loading) {
     return <h2>Loading...</h2>;
   }
 
-  if (error) {
+  if (error || !data?.book) {
     console.error(error);
     return null;
   }
 
   return <div className="grid">
-    {data.countries.map((country) => (
-      <div key={country.code} className="grid">
-        <h3>{country.name}</h3>
-        <p>
-          {country.code} - {country.emoji}
-        </p>
-      </div>
-    ))}
-  </div>
-}
+    {data.book.author?.firstName} {data.book.author?.lastName}
+  </div>;
+};
 
 export default HomePage;
