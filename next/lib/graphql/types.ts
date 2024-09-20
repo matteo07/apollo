@@ -4,6 +4,21 @@ export type Book = {
   author: number
 }
 
+export type CategoryServiceResponse  ={
+    slug: string
+    title: string
+    description: string
+    booksIds: string[]
+}
+
+
+export type Category  ={
+    slug: string
+    title: string
+    description: string
+    books: Book[]
+}
+
 export type RootValue = unknown
 
 export interface BookByIdArgument {
@@ -29,11 +44,29 @@ type Book {
     author: Author
 }
 
+type Category {
+    slug: String
+    title: String
+    description: String
+    books: [Book]    
+}
+
+type Recommendation {
+    items: [Book]
+    title: String
+    description: String
+}
+
 type Query {
     books: [Book]
     book(id: Int): Book
     author(id: Int): Author
+    categories: [Category]
+    category(slug: String): Category
+    recommendations: [Recommendation]
 }
 `;
 
-export const REST_BASE_URL = 'http://localhost:8091/';
+export const BOOK_SERVICE_BASE_URL = 'http://localhost:8091/';
+export const CATEGORIZATION_SERVICE_BASE_URL = 'http://localhost:8092/';
+
