@@ -1,34 +1,48 @@
 export type Book = {
-  id: number
-  title: string
-  author: number
+    id: number
+    title: string
+    author: number
 }
 
-export type CategoryServiceResponse  ={
+export type CategoryServiceResponse = {
     slug: string
     title: string
     description: string
-    booksIds: string[]
+    items: string[]
+}
+
+export type RecommendationServiceResponse = {
+    id: number
+    title: string
+    description: string
+    items: string[]
 }
 
 
-export type Category  ={
+export type Category = {
     slug: string
     title: string
     description: string
-    books: Book[]
+    items: Book[]
 }
 
 export type RootValue = unknown
 
 export interface BookByIdArgument {
-  id: number;
+    id: number;
+}
+
+export interface BooksByIdsArgument {
+    ids?: string[];
 }
 
 export interface AuthorByIdArgument {
-  id: number;
+    id: number;
 }
 
+export interface CategoryBySlugArgument {
+    slug: string;
+}
 
 export const typeDefs = `#graphql
 
@@ -45,22 +59,23 @@ type Book {
 }
 
 type Category {
+    description: String
+    items: [Book]
     slug: String
     title: String
-    description: String
-    books: [Book]    
 }
 
 type Recommendation {
+    description: String
+    id: Int
     items: [Book]
     title: String
-    description: String
 }
 
 type Query {
-    books: [Book]
-    book(id: Int): Book
-    author(id: Int): Author
+    books(id: [Int]): [Book]
+    book(id: Int!): Book
+    author(id: Int!): Author
     categories: [Category]
     category(slug: String): Category
     recommendations: [Recommendation]

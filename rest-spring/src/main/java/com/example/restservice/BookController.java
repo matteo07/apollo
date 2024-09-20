@@ -2,9 +2,11 @@ package com.example.restservice;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.List;
 
 @RestController
 public class BookController {
@@ -12,13 +14,20 @@ public class BookController {
   private static final Book[] books = {
       new Book(1, 1, "The Awakening"),
       new Book(2, 2, "Paul Auster"),
-      new Book(3, 3, "Libro"),
+      new Book(3, 3, "Libbro"),
+      new Book(4, 3, "Un libro"),
+      new Book(5, 1, "Lmt enterprise"),
+      new Book(6, 3, "Harry Potter"),
+      new Book(7, 3, "Paura Potter?"),
   };
 
-  @GetMapping("/books")
-  public Book[] books() {
-    System.out.println("GET books");
-    return books;
+  @GetMapping("/book")
+  public Book[] books(@RequestParam(required = false) List<Long> ids) {
+    System.out.println("GET books" + ids);
+    if (ids == null || ids.isEmpty()) {
+      return books;
+    }
+    return Arrays.stream(books).filter((book -> ids.contains(book.id()))).toArray(Book[]::new);
   }
 
   @GetMapping("/book/{id}")
