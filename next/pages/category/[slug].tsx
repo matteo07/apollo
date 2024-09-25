@@ -9,7 +9,7 @@ const CategoryPage = () => {
         variables: {categorySlug: query.slug as string},
         skip: !query.slug
     })
-
+    
     if (loading) {
         return <>loading...</>
     }
@@ -19,8 +19,7 @@ const CategoryPage = () => {
     }
 
     return <>
-        <h2>{data.category.title}</h2>
-        <p>{data.category.description}</p>
+        <h3 style={{fontSize: '20px', fontWeight: '600'}}>{data.category.description}</h3>
         <div style={{display: 'flex', gap: "4px"}}>
             {(data.category?.items ?? []).map((item) => <BookCard key={item.id} book={item}/>)}
         </div>

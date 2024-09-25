@@ -1,6 +1,6 @@
 import type {NextPage} from 'next';
 import {useGetRecommendationsQuery} from '@lib/graphql/generated.types';
-import {BookCard} from "@components/BookCard";
+import {RecommendationSection} from "@components/RecommendationSection";
 
 
 const HomePage: NextPage = () => {
@@ -15,18 +15,8 @@ const HomePage: NextPage = () => {
     }
 
     return <div className="grid">
-        {data.recommendations.map((recommendation) => <div key={recommendation?.id}
-                                                           style={{display: 'flex', flexDirection: 'column'}}>
-            <h2>
-                {recommendation?.title}
-            </h2>
-            <h4>
-                {recommendation?.description}
-            </h4>
-            <div style={{display: 'flex', gap: "4px"}}>
-                {(recommendation?.items ?? []).map((item) => <BookCard key={item.id} book={item}/>)}
-            </div>
-        </div>)}
+        {data.recommendations.map((recommendation) =>
+            <RecommendationSection key={recommendation?.id} recommendation={recommendation}/>)}
     </div>;
 };
 
