@@ -1,9 +1,31 @@
-query getBook($bookId: Int) {
+query getBook($bookId: Int!) {
     book(id: $bookId) {
         title
         author {
             firstName
             lastName
         }
+    }
+}
+
+query getCategory($categorySlug: String!) {
+    category(slug: $categorySlug) {
+        title
+        description
+        items {
+            title
+            author {
+                firstName
+                lastName
+            }
+        }
+    }
+}
+
+query getCategories {
+    categories {
+        title
+        description
+        slug
     }
 }
