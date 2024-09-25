@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class RecommendationController {
 
   private static final Recommendation[] RECOMMENDATIONS = {
-      new Recommendation(1, "For you", "These books base on what you've read", new Integer[]{1, 2, 3}),
+      new Recommendation(1, "For you", "These books base on what you've read", new Integer[]{1, 2, 3, 4, 6, 7}),
       new Recommendation(2, "Most popular", "These books base on what you've read", new Integer[]{2, 3, 5, 6}),
       new Recommendation(3, "Most recent", "These books have been published recently", new Integer[]{1, 4, 5, 6, 7}),
   };
