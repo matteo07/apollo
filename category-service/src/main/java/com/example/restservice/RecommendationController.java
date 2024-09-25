@@ -16,8 +16,10 @@ public class RecommendationController {
   };
 
   @GetMapping("/recommendation")
-  public Recommendation[] recommendations() {
+  public Recommendation[] recommendations() throws InterruptedException {
     System.out.println("GET recommendations");
+
+    Thread.sleep(500);
     return RECOMMENDATIONS;
   }
 

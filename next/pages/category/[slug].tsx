@@ -2,6 +2,7 @@ import {useRouter} from "next/router";
 import Error from "next/error";
 import {useGetCategoryQuery} from "@lib/graphql/generated.types";
 import {BookCard} from "@components/BookCard";
+import {Loader} from "@components/Loader";
 
 const CategoryPage = () => {
     const {query} = useRouter()
@@ -9,9 +10,9 @@ const CategoryPage = () => {
         variables: {categorySlug: query.slug as string},
         skip: !query.slug
     })
-    
+
     if (loading) {
-        return <>loading...</>
+        return <Loader/>
     }
 
     if (error || !query.slug || !data) {

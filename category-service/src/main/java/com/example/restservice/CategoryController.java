@@ -16,8 +16,9 @@ public class CategoryController {
   };
 
   @GetMapping("/category/{slug}")
-  public Category category(@PathVariable String slug) {
+  public Category category(@PathVariable String slug) throws InterruptedException {
 
+    Thread.sleep(1500);
     System.out.println("GET category with slug: " + slug);
     return Arrays.stream(CATEGORIES).filter((category -> slug.equals(category.slug()))).findFirst().orElse(null);
   }
