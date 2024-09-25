@@ -9,9 +9,9 @@ import java.util.Arrays;
 @RestController
 public class AuthorController {
   private static final Author[] authors = {
-      new Author(1, "Kate", "Chopin"),
-      new Author(2, "Paul", "Auster"),
-      new Author(3, "Maccio", "Capatonda"),
+      new Author(1, "Kate", "Chopin", "Some info about author's life"),
+      new Author(2, "Paul", "Auster", "He was born on the same day he was born"),
+      new Author(3, "Maccio", "Capatonda", "A few infos about Maccio's life"),
   };
 
   @GetMapping("/author/{id}")

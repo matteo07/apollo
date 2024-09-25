@@ -18,6 +18,13 @@ export type RecommendationServiceResponse = {
     items: string[]
 }
 
+export type AuthorServiceResponse = {
+    id: number
+    firstName: string
+    lastName: string
+    bio: string
+    books: string[]
+}
 
 export type Category = {
     slug: string
@@ -34,6 +41,7 @@ export interface BookByIdArgument {
 
 export interface BooksByIdsArgument {
     ids?: string[];
+    authorId?: number;
 }
 
 export interface AuthorByIdArgument {
@@ -47,9 +55,11 @@ export interface CategoryBySlugArgument {
 export const typeDefs = `#graphql
 
 type Author {
-    _id: Int
+    id: Int
     firstName: String!
     lastName: String!
+    bio: String!
+    books: [Book!]!
 }
 
 type Book {

@@ -1,6 +1,11 @@
 import {ApolloServer} from '@apollo/server';
 import {nextHandler} from '@lib/nextHandler';
-import type {Book, CategoryServiceResponse, RecommendationServiceResponse} from '@lib/graphql/types';
+import type {
+    AuthorServiceResponse,
+    Book,
+    CategoryServiceResponse,
+    RecommendationServiceResponse
+} from '@lib/graphql/types';
 import {typeDefs} from '@lib/graphql/types';
 import {
     authorByIdResolver,
@@ -19,6 +24,9 @@ const resolvers = {
         category: categoryBySlugResolver,
         categories: categoriesResolver,
         recommendations: recommendationsResolver,
+    },
+    Author: {
+        books: async (authorContext: AuthorServiceResponse) => await booksResolver(undefined, {authorId: authorContext.id})
     },
     Book: {
         author: async (bookContext: Book) => await authorByIdResolver(undefined, {id: bookContext.author})

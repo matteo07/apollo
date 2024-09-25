@@ -19,8 +19,10 @@ export type Scalars = {
 
 export type Author = {
   __typename?: 'Author';
-  _id?: Maybe<Scalars['Int']['output']>;
+  bio: Scalars['String']['output'];
+  books: Array<Book>;
   firstName: Scalars['String']['output'];
+  id?: Maybe<Scalars['Int']['output']>;
   lastName: Scalars['String']['output'];
 };
 
@@ -84,14 +86,14 @@ export type GetBookQueryVariables = Exact<{
 
 export type GetBookQuery = { __typename?: 'Query', book: { __typename?: 'Book', title: string, author: { __typename?: 'Author', firstName: string, lastName: string } } };
 
-export type ItemFragmentFragment = { __typename?: 'Book', id: number, title: string, author: { __typename?: 'Author', firstName: string, lastName: string } };
+export type ItemFragmentFragment = { __typename?: 'Book', id: number, title: string, author: { __typename?: 'Author', id?: number | null, firstName: string, lastName: string } };
 
 export type GetCategoryQueryVariables = Exact<{
   categorySlug: Scalars['String']['input'];
 }>;
 
 
-export type GetCategoryQuery = { __typename?: 'Query', category: { __typename?: 'Category', title: string, description: string, items: Array<{ __typename?: 'Book', id: number, title: string, author: { __typename?: 'Author', firstName: string, lastName: string } }> } };
+export type GetCategoryQuery = { __typename?: 'Query', category: { __typename?: 'Category', title: string, description: string, items: Array<{ __typename?: 'Book', id: number, title: string, author: { __typename?: 'Author', id?: number | null, firstName: string, lastName: string } }> } };
 
 export type GetCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -101,13 +103,21 @@ export type GetCategoriesQuery = { __typename?: 'Query', categories: Array<{ __t
 export type GetRecommendationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetRecommendationsQuery = { __typename?: 'Query', recommendations: Array<{ __typename?: 'Recommendation', id: number, title: string, description: string, items: Array<{ __typename?: 'Book', id: number, title: string, author: { __typename?: 'Author', firstName: string, lastName: string } }> }> };
+export type GetRecommendationsQuery = { __typename?: 'Query', recommendations: Array<{ __typename?: 'Recommendation', id: number, title: string, description: string, items: Array<{ __typename?: 'Book', id: number, title: string, author: { __typename?: 'Author', id?: number | null, firstName: string, lastName: string } }> }> };
+
+export type GetAuthorQueryVariables = Exact<{
+  authorId: Scalars['Int']['input'];
+}>;
+
+
+export type GetAuthorQuery = { __typename?: 'Query', author: { __typename?: 'Author', firstName: string, lastName: string, bio: string, books: Array<{ __typename?: 'Book', id: number, title: string }> } };
 
 export const ItemFragmentFragmentDoc = gql`
     fragment ItemFragment on Book {
   id
   title
   author {
+    id
     firstName
     lastName
   }
@@ -286,3 +296,49 @@ export type GetRecommendationsQueryHookResult = ReturnType<typeof useGetRecommen
 export type GetRecommendationsLazyQueryHookResult = ReturnType<typeof useGetRecommendationsLazyQuery>;
 export type GetRecommendationsSuspenseQueryHookResult = ReturnType<typeof useGetRecommendationsSuspenseQuery>;
 export type GetRecommendationsQueryResult = Apollo.QueryResult<GetRecommendationsQuery, GetRecommendationsQueryVariables>;
+export const GetAuthorDocument = gql`
+    query getAuthor($authorId: Int!) {
+  author(id: $authorId) {
+    firstName
+    lastName
+    bio
+    books {
+      id
+      title
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetAuthorQuery__
+ *
+ * To run a query within a React component, call `useGetAuthorQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAuthorQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAuthorQuery({
+ *   variables: {
+ *      authorId: // value for 'authorId'
+ *   },
+ * });
+ */
+export function useGetAuthorQuery(baseOptions: Apollo.QueryHookOptions<GetAuthorQuery, GetAuthorQueryVariables> & ({ variables: GetAuthorQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAuthorQuery, GetAuthorQueryVariables>(GetAuthorDocument, options);
+      }
+export function useGetAuthorLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAuthorQuery, GetAuthorQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAuthorQuery, GetAuthorQueryVariables>(GetAuthorDocument, options);
+        }
+export function useGetAuthorSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetAuthorQuery, GetAuthorQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetAuthorQuery, GetAuthorQueryVariables>(GetAuthorDocument, options);
+        }
+export type GetAuthorQueryHookResult = ReturnType<typeof useGetAuthorQuery>;
+export type GetAuthorLazyQueryHookResult = ReturnType<typeof useGetAuthorLazyQuery>;
+export type GetAuthorSuspenseQueryHookResult = ReturnType<typeof useGetAuthorSuspenseQuery>;
+export type GetAuthorQueryResult = Apollo.QueryResult<GetAuthorQuery, GetAuthorQueryVariables>;

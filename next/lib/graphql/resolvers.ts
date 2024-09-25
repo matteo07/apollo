@@ -13,9 +13,10 @@ const getBookServiceData = async (path: string) => await getData(path, BOOK_SERV
 const getCategorizationServiceData = async (path: string) => await getData(path, CATEGORIZATION_SERVICE_BASE_URL)
 
 // BOOKS SERVICE RESOLVERS
-export const booksResolver = async (_: RootValue, {ids}: BooksByIdsArgument) => {
+export const booksResolver = async (_: RootValue, {ids, authorId}: BooksByIdsArgument) => {
     const qp = ids ? `?ids=${ids.join(',')}` : ''
-    return await getBookServiceData(`book${qp}`)
+    const authorQp = authorId ? `?authorId=${authorId}` : ''
+    return await getBookServiceData(`book${authorQp ? authorQp : qp}`)
 };
 
 export const bookByIdResolver = async (_: RootValue, {id}: BookByIdArgument): Promise<Book | null> => await getBookServiceData(`book/${id}`);

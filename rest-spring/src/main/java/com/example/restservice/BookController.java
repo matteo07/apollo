@@ -22,8 +22,12 @@ public class BookController {
   };
 
   @GetMapping("/book")
-  public Book[] books(@RequestParam(required = false) List<Long> ids) {
-    System.out.println("GET books" + ids);
+  public Book[] books(@RequestParam(required = false) List<Long> ids, @RequestParam(required = false) Long authorId) throws InterruptedException {
+    System.out.println("GET books" + ids + authorId);
+    Thread.sleep(1200);
+    if (authorId != null) {
+      return Arrays.stream(books).filter((book -> authorId.equals(book.author()))).toArray(Book[]::new);
+    }
     if (ids == null || ids.isEmpty()) {
       return books;
     }

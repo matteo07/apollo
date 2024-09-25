@@ -13,6 +13,7 @@ fragment ItemFragment on Book {
     id
     title
     author {
+        id
         firstName
         lastName
     }
@@ -43,6 +44,18 @@ query getRecommendations {
         description
         items {
             ...ItemFragment
+        }
+    }
+}
+
+query getAuthor ($authorId: Int!) {
+    author(id: $authorId) {
+        firstName
+        lastName
+        bio
+        books {
+            id
+            title
         }
     }
 }
