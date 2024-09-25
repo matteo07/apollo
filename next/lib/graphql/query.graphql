@@ -8,16 +8,22 @@ query getBook($bookId: Int!) {
     }
 }
 
+
+fragment ItemFragment on Book {
+    id
+    title
+    author {
+        firstName
+        lastName
+    }
+}
+
 query getCategory($categorySlug: String!) {
     category(slug: $categorySlug) {
         title
         description
         items {
-            title
-            author {
-                firstName
-                lastName
-            }
+            ...ItemFragment
         }
     }
 }
@@ -27,5 +33,16 @@ query getCategories {
         title
         description
         slug
+    }
+}
+
+query getRecommendations {
+    recommendations {
+        id
+        title
+        description
+        items {
+            ...ItemFragment
+        }
     }
 }

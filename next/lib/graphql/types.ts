@@ -48,37 +48,37 @@ export const typeDefs = `#graphql
 
 type Author {
     _id: Int
-    firstName: String
-    lastName: String
+    firstName: String!
+    lastName: String!
 }
 
 type Book {
-    id: Int
-    title: String
-    author: Author
+    id: Int!
+    title: String!
+    author: Author!
 }
 
 type Category {
-    description: String
-    items: [Book]
-    slug: String
-    title: String
+    description: String!
+    items: [Book!]!
+    slug: String!
+    title: String!
 }
 
 type Recommendation {
-    description: String
-    id: Int
-    items: [Book]
-    title: String
+    description: String!
+    id: Int!
+    items: [Book!]!
+    title: String!
 }
 
 type Query {
-    books(id: [Int]): [Book]
-    book(id: Int!): Book
-    author(id: Int!): Author
-    categories: [Category]
-    category(slug: String): Category
-    recommendations: [Recommendation]
+    books(id: [Int]): [Book!]!
+    book(id: Int!): Book!
+    author(id: Int!): Author!
+    categories: [Category!]!
+    category(slug: String): Category!
+    recommendations: [Recommendation!]!
 }
 `;
 
