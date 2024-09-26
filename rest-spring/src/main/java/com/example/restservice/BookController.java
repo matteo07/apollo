@@ -13,12 +13,13 @@ public class BookController {
 
   private static final Book[] books = {
       new Book(1, 1, "The Awakening"),
-      new Book(2, 2, "Paul Auster"),
+      new Book(2, 2, "Squeeze Play"),
       new Book(3, 3, "Libbro"),
       new Book(4, 3, "Un libro"),
       new Book(5, 1, "Lmt enterprise"),
-      new Book(6, 3, "Harry Potter"),
+      new Book(6, 3, "Hendry ponte"),
       new Book(7, 3, "Paura Potter?"),
+      new Book(8, 2, "Invisible"),
   };
 
   @GetMapping("/book")
