@@ -13,7 +13,6 @@ const AuthorPage = () => {
     if (loading) {
         return <Loader/>
     }
-
     if (error || !data) {
         return <Error statusCode={404}/>
     }

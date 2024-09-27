@@ -6,11 +6,10 @@ import {Loader} from "@components/Loader";
 
 const HomePage: NextPage = () => {
     const {data, loading, error} = useGetRecommendationsQuery();
-
+    
     if (loading) {
         return <Loader/>;
     }
-
     if (error || !data?.recommendations) {
         return null;
     }
