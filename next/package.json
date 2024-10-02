@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "codegen": "npx graphql-code-generator --config tools/codegen.ts",
+    "codegen": "npx graphql-code-generator --config codegen.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
