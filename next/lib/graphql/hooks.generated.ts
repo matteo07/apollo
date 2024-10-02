@@ -1,3 +1,4 @@
+import type * as GeneratedTypes from 'lib/graphql/operations.generated';
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
@@ -79,39 +80,6 @@ export type Recommendation = {
   title: Scalars['String']['output'];
 };
 
-export type GetBookQueryVariables = Exact<{
-  bookId: Scalars['Int']['input'];
-}>;
-
-
-export type GetBookQuery = { __typename?: 'Query', book: { __typename?: 'Book', title: string, author: { __typename?: 'Author', firstName: string, lastName: string } } };
-
-export type ItemFragmentFragment = { __typename?: 'Book', id: number, title: string, author: { __typename?: 'Author', id?: number | null, firstName: string, lastName: string } };
-
-export type GetCategoryQueryVariables = Exact<{
-  categorySlug: Scalars['String']['input'];
-}>;
-
-
-export type GetCategoryQuery = { __typename?: 'Query', category: { __typename?: 'Category', title: string, description: string, items: Array<{ __typename?: 'Book', id: number, title: string, author: { __typename?: 'Author', id?: number | null, firstName: string, lastName: string } }> } };
-
-export type GetCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetCategoriesQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', title: string, description: string, slug: string }> };
-
-export type GetRecommendationsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetRecommendationsQuery = { __typename?: 'Query', recommendations: Array<{ __typename?: 'Recommendation', id: number, title: string, description: string, items: Array<{ __typename?: 'Book', id: number, title: string, author: { __typename?: 'Author', id?: number | null, firstName: string, lastName: string } }> }> };
-
-export type GetAuthorQueryVariables = Exact<{
-  authorId: Scalars['Int']['input'];
-}>;
-
-
-export type GetAuthorQuery = { __typename?: 'Query', author: { __typename?: 'Author', firstName: string, lastName: string, bio: string, books: Array<{ __typename?: 'Book', id: number, title: string }> } };
-
 export const ItemFragmentFragmentDoc = gql`
     fragment ItemFragment on Book {
   id
@@ -151,22 +119,22 @@ export const GetBookDocument = gql`
  *   },
  * });
  */
-export function useGetBookQuery(baseOptions: Apollo.QueryHookOptions<GetBookQuery, GetBookQueryVariables> & ({ variables: GetBookQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+export function useGetBookQuery(baseOptions: Apollo.QueryHookOptions<GeneratedTypes.GetBookQuery, GeneratedTypes.GetBookQueryVariables> & ({ variables: GeneratedTypes.GetBookQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetBookQuery, GetBookQueryVariables>(GetBookDocument, options);
+        return Apollo.useQuery<GeneratedTypes.GetBookQuery, GeneratedTypes.GetBookQueryVariables>(GetBookDocument, options);
       }
-export function useGetBookLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBookQuery, GetBookQueryVariables>) {
+export function useGetBookLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GeneratedTypes.GetBookQuery, GeneratedTypes.GetBookQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetBookQuery, GetBookQueryVariables>(GetBookDocument, options);
+          return Apollo.useLazyQuery<GeneratedTypes.GetBookQuery, GeneratedTypes.GetBookQueryVariables>(GetBookDocument, options);
         }
-export function useGetBookSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetBookQuery, GetBookQueryVariables>) {
+export function useGetBookSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GeneratedTypes.GetBookQuery, GeneratedTypes.GetBookQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetBookQuery, GetBookQueryVariables>(GetBookDocument, options);
+          return Apollo.useSuspenseQuery<GeneratedTypes.GetBookQuery, GeneratedTypes.GetBookQueryVariables>(GetBookDocument, options);
         }
 export type GetBookQueryHookResult = ReturnType<typeof useGetBookQuery>;
 export type GetBookLazyQueryHookResult = ReturnType<typeof useGetBookLazyQuery>;
 export type GetBookSuspenseQueryHookResult = ReturnType<typeof useGetBookSuspenseQuery>;
-export type GetBookQueryResult = Apollo.QueryResult<GetBookQuery, GetBookQueryVariables>;
+export type GetBookQueryResult = Apollo.QueryResult<GeneratedTypes.GetBookQuery, GeneratedTypes.GetBookQueryVariables>;
 export const GetCategoryDocument = gql`
     query getCategory($categorySlug: String!) {
   category(slug: $categorySlug) {
@@ -195,22 +163,22 @@ export const GetCategoryDocument = gql`
  *   },
  * });
  */
-export function useGetCategoryQuery(baseOptions: Apollo.QueryHookOptions<GetCategoryQuery, GetCategoryQueryVariables> & ({ variables: GetCategoryQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+export function useGetCategoryQuery(baseOptions: Apollo.QueryHookOptions<GeneratedTypes.GetCategoryQuery, GeneratedTypes.GetCategoryQueryVariables> & ({ variables: GeneratedTypes.GetCategoryQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetCategoryQuery, GetCategoryQueryVariables>(GetCategoryDocument, options);
+        return Apollo.useQuery<GeneratedTypes.GetCategoryQuery, GeneratedTypes.GetCategoryQueryVariables>(GetCategoryDocument, options);
       }
-export function useGetCategoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCategoryQuery, GetCategoryQueryVariables>) {
+export function useGetCategoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GeneratedTypes.GetCategoryQuery, GeneratedTypes.GetCategoryQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetCategoryQuery, GetCategoryQueryVariables>(GetCategoryDocument, options);
+          return Apollo.useLazyQuery<GeneratedTypes.GetCategoryQuery, GeneratedTypes.GetCategoryQueryVariables>(GetCategoryDocument, options);
         }
-export function useGetCategorySuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetCategoryQuery, GetCategoryQueryVariables>) {
+export function useGetCategorySuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GeneratedTypes.GetCategoryQuery, GeneratedTypes.GetCategoryQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetCategoryQuery, GetCategoryQueryVariables>(GetCategoryDocument, options);
+          return Apollo.useSuspenseQuery<GeneratedTypes.GetCategoryQuery, GeneratedTypes.GetCategoryQueryVariables>(GetCategoryDocument, options);
         }
 export type GetCategoryQueryHookResult = ReturnType<typeof useGetCategoryQuery>;
 export type GetCategoryLazyQueryHookResult = ReturnType<typeof useGetCategoryLazyQuery>;
 export type GetCategorySuspenseQueryHookResult = ReturnType<typeof useGetCategorySuspenseQuery>;
-export type GetCategoryQueryResult = Apollo.QueryResult<GetCategoryQuery, GetCategoryQueryVariables>;
+export type GetCategoryQueryResult = Apollo.QueryResult<GeneratedTypes.GetCategoryQuery, GeneratedTypes.GetCategoryQueryVariables>;
 export const GetCategoriesDocument = gql`
     query getCategories {
   categories {
@@ -236,22 +204,22 @@ export const GetCategoriesDocument = gql`
  *   },
  * });
  */
-export function useGetCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<GetCategoriesQuery, GetCategoriesQueryVariables>) {
+export function useGetCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<GeneratedTypes.GetCategoriesQuery, GeneratedTypes.GetCategoriesQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetCategoriesQuery, GetCategoriesQueryVariables>(GetCategoriesDocument, options);
+        return Apollo.useQuery<GeneratedTypes.GetCategoriesQuery, GeneratedTypes.GetCategoriesQueryVariables>(GetCategoriesDocument, options);
       }
-export function useGetCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCategoriesQuery, GetCategoriesQueryVariables>) {
+export function useGetCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GeneratedTypes.GetCategoriesQuery, GeneratedTypes.GetCategoriesQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetCategoriesQuery, GetCategoriesQueryVariables>(GetCategoriesDocument, options);
+          return Apollo.useLazyQuery<GeneratedTypes.GetCategoriesQuery, GeneratedTypes.GetCategoriesQueryVariables>(GetCategoriesDocument, options);
         }
-export function useGetCategoriesSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetCategoriesQuery, GetCategoriesQueryVariables>) {
+export function useGetCategoriesSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GeneratedTypes.GetCategoriesQuery, GeneratedTypes.GetCategoriesQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetCategoriesQuery, GetCategoriesQueryVariables>(GetCategoriesDocument, options);
+          return Apollo.useSuspenseQuery<GeneratedTypes.GetCategoriesQuery, GeneratedTypes.GetCategoriesQueryVariables>(GetCategoriesDocument, options);
         }
 export type GetCategoriesQueryHookResult = ReturnType<typeof useGetCategoriesQuery>;
 export type GetCategoriesLazyQueryHookResult = ReturnType<typeof useGetCategoriesLazyQuery>;
 export type GetCategoriesSuspenseQueryHookResult = ReturnType<typeof useGetCategoriesSuspenseQuery>;
-export type GetCategoriesQueryResult = Apollo.QueryResult<GetCategoriesQuery, GetCategoriesQueryVariables>;
+export type GetCategoriesQueryResult = Apollo.QueryResult<GeneratedTypes.GetCategoriesQuery, GeneratedTypes.GetCategoriesQueryVariables>;
 export const GetRecommendationsDocument = gql`
     query getRecommendations {
   recommendations {
@@ -280,22 +248,22 @@ export const GetRecommendationsDocument = gql`
  *   },
  * });
  */
-export function useGetRecommendationsQuery(baseOptions?: Apollo.QueryHookOptions<GetRecommendationsQuery, GetRecommendationsQueryVariables>) {
+export function useGetRecommendationsQuery(baseOptions?: Apollo.QueryHookOptions<GeneratedTypes.GetRecommendationsQuery, GeneratedTypes.GetRecommendationsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetRecommendationsQuery, GetRecommendationsQueryVariables>(GetRecommendationsDocument, options);
+        return Apollo.useQuery<GeneratedTypes.GetRecommendationsQuery, GeneratedTypes.GetRecommendationsQueryVariables>(GetRecommendationsDocument, options);
       }
-export function useGetRecommendationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetRecommendationsQuery, GetRecommendationsQueryVariables>) {
+export function useGetRecommendationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GeneratedTypes.GetRecommendationsQuery, GeneratedTypes.GetRecommendationsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetRecommendationsQuery, GetRecommendationsQueryVariables>(GetRecommendationsDocument, options);
+          return Apollo.useLazyQuery<GeneratedTypes.GetRecommendationsQuery, GeneratedTypes.GetRecommendationsQueryVariables>(GetRecommendationsDocument, options);
         }
-export function useGetRecommendationsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetRecommendationsQuery, GetRecommendationsQueryVariables>) {
+export function useGetRecommendationsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GeneratedTypes.GetRecommendationsQuery, GeneratedTypes.GetRecommendationsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetRecommendationsQuery, GetRecommendationsQueryVariables>(GetRecommendationsDocument, options);
+          return Apollo.useSuspenseQuery<GeneratedTypes.GetRecommendationsQuery, GeneratedTypes.GetRecommendationsQueryVariables>(GetRecommendationsDocument, options);
         }
 export type GetRecommendationsQueryHookResult = ReturnType<typeof useGetRecommendationsQuery>;
 export type GetRecommendationsLazyQueryHookResult = ReturnType<typeof useGetRecommendationsLazyQuery>;
 export type GetRecommendationsSuspenseQueryHookResult = ReturnType<typeof useGetRecommendationsSuspenseQuery>;
-export type GetRecommendationsQueryResult = Apollo.QueryResult<GetRecommendationsQuery, GetRecommendationsQueryVariables>;
+export type GetRecommendationsQueryResult = Apollo.QueryResult<GeneratedTypes.GetRecommendationsQuery, GeneratedTypes.GetRecommendationsQueryVariables>;
 export const GetAuthorDocument = gql`
     query getAuthor($authorId: Int!) {
   author(id: $authorId) {
@@ -326,19 +294,19 @@ export const GetAuthorDocument = gql`
  *   },
  * });
  */
-export function useGetAuthorQuery(baseOptions: Apollo.QueryHookOptions<GetAuthorQuery, GetAuthorQueryVariables> & ({ variables: GetAuthorQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+export function useGetAuthorQuery(baseOptions: Apollo.QueryHookOptions<GeneratedTypes.GetAuthorQuery, GeneratedTypes.GetAuthorQueryVariables> & ({ variables: GeneratedTypes.GetAuthorQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetAuthorQuery, GetAuthorQueryVariables>(GetAuthorDocument, options);
+        return Apollo.useQuery<GeneratedTypes.GetAuthorQuery, GeneratedTypes.GetAuthorQueryVariables>(GetAuthorDocument, options);
       }
-export function useGetAuthorLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAuthorQuery, GetAuthorQueryVariables>) {
+export function useGetAuthorLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GeneratedTypes.GetAuthorQuery, GeneratedTypes.GetAuthorQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetAuthorQuery, GetAuthorQueryVariables>(GetAuthorDocument, options);
+          return Apollo.useLazyQuery<GeneratedTypes.GetAuthorQuery, GeneratedTypes.GetAuthorQueryVariables>(GetAuthorDocument, options);
         }
-export function useGetAuthorSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetAuthorQuery, GetAuthorQueryVariables>) {
+export function useGetAuthorSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GeneratedTypes.GetAuthorQuery, GeneratedTypes.GetAuthorQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetAuthorQuery, GetAuthorQueryVariables>(GetAuthorDocument, options);
+          return Apollo.useSuspenseQuery<GeneratedTypes.GetAuthorQuery, GeneratedTypes.GetAuthorQueryVariables>(GetAuthorDocument, options);
         }
 export type GetAuthorQueryHookResult = ReturnType<typeof useGetAuthorQuery>;
 export type GetAuthorLazyQueryHookResult = ReturnType<typeof useGetAuthorLazyQuery>;
 export type GetAuthorSuspenseQueryHookResult = ReturnType<typeof useGetAuthorSuspenseQuery>;
-export type GetAuthorQueryResult = Apollo.QueryResult<GetAuthorQuery, GetAuthorQueryVariables>;
+export type GetAuthorQueryResult = Apollo.QueryResult<GeneratedTypes.GetAuthorQuery, GeneratedTypes.GetAuthorQueryVariables>;

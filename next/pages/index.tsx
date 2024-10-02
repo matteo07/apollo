@@ -1,12 +1,12 @@
 import type {NextPage} from 'next';
-import {useGetRecommendationsQuery} from '@lib/graphql/generated.types';
+import {useGetRecommendationsQuery} from '@lib/graphql/hooks.generated';
 import {RecommendationSection} from "@components/RecommendationSection";
 import {Loader} from "@components/Loader";
 
 
 const HomePage: NextPage = () => {
     const {data, loading, error} = useGetRecommendationsQuery();
-    
+
     if (loading) {
         return <Loader/>;
     }

@@ -1,5 +1,5 @@
 import {useRouter} from "next/router";
-import type {GetCategoriesQuery} from "@lib/graphql/generated.types";
+import type {GetCategoriesQuery} from "@lib/graphql/operations.generated";
 import {HeaderLink} from "./HeaderLink";
 import {headerStyle} from "./styles";
 

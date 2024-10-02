@@ -1,6 +1,6 @@
 import {useRouter} from "next/router";
 import Error from "next/error";
-import {useGetAuthorQuery} from "@lib/graphql/generated.types";
+import {useGetAuthorQuery} from "@lib/graphql/hooks.generated";
 import {Loader} from "@components/Loader";
 
 const AuthorPage = () => {
