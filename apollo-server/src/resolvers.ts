@@ -17,7 +17,9 @@ const getData = async (path: string, baseUrl: string) => await (await fetch(base
 const getBookServiceData = async (path: string) => await getData(path, BOOK_SERVICE_BASE_URL)
 const getCategorizationServiceData = async (path: string) => await getData(path, CATEGORIZATION_SERVICE_BASE_URL)
 
-// BOOKS SERVICE RESOLVERS
+/*
+--------------------------- BOOKS SERVICE RESOLVERS ---------------------------
+ */
 export const booksResolver = async (_: RootValue, { ids, authorId }: BooksByIdsArgument) => {
     const qp = ids ? `?ids=${ids.join(',')}` : ''
     const authorQp = authorId ? `?authorId=${authorId}` : ''
@@ -26,18 +28,23 @@ export const booksResolver = async (_: RootValue, { ids, authorId }: BooksByIdsA
 
 const bookByIdResolver = async (_: RootValue, { id }: BookByIdArgument): Promise<Book | null> =>
     (await getBookServiceData(`book/${id}`)) as Book
+
 const authorByIdResolver = async (_: RootValue, { id }: AuthorByIdArgument): Promise<AuthorServiceResponse | null> =>
     (await getBookServiceData(`author/${id}`)) as AuthorServiceResponse
 
-// CATEGORIZATION SERVICE RESOLVERS
-const categoriesResolver = async (_: RootValue): Promise<CategoryServiceResponse[] | null> =>
+/*
+--------------------------- CATEGORIZATION SERVICE RESOLVERS ---------------------------
+ */
+const categoriesResolver = async (): Promise<CategoryServiceResponse[] | null> =>
     (await getCategorizationServiceData(`category`)) as CategoryServiceResponse[]
+
 const categoryBySlugResolver = async (
     _: RootValue,
     { slug }: CategoryBySlugArgument,
 ): Promise<CategoryServiceResponse | null> =>
     (await getCategorizationServiceData(`category/${slug}`)) as CategoryServiceResponse
-const recommendationsResolver = async (_: RootValue): Promise<RecommendationServiceResponse | null> =>
+
+const recommendationsResolver = async (): Promise<RecommendationServiceResponse | null> =>
     (await getCategorizationServiceData('recommendation')) as RecommendationServiceResponse
 
 export const resolvers = {
