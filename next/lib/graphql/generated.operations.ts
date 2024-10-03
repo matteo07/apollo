@@ -1,4 +1,4 @@
-import type * as Types from 'lib/graphql/types.generated'
+import type * as Types from 'lib/graphql/generated.types'
 
 export type GetBookQueryVariables = Types.Exact<{
     bookId: Types.Scalars['Int']['input']

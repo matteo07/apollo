@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { useGetCategoriesQuery } from '@lib/graphql/hooks.generated'
+import { useGetCategoriesQuery } from '@lib/graphql/generated.hooks'
 import { Header } from '@components/Header'
 import { pageBgStyle, pageContentStyle } from './styles'
 

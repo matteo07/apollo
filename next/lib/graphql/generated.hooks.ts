@@ -1,4 +1,4 @@
-import type * as GeneratedTypes from 'lib/graphql/operations.generated'
+import type * as GeneratedTypes from 'lib/graphql/generated.operations'
 import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
 const defaultOptions = {} as const

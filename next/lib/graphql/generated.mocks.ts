@@ -1,4 +1,4 @@
-import { Author, Book, Category, Query, Recommendation } from 'lib/graphql/types.generated'
+import { Author, Book, Category, Query, Recommendation } from 'lib/graphql/generated.types'
 
 export const anAuthor = (overrides?: Partial<Author>): Author => {
     return {

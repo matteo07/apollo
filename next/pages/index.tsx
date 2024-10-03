@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { useGetRecommendationsQuery } from '@lib/graphql/hooks.generated'
+import { useGetRecommendationsQuery } from '@lib/graphql/generated.hooks'
 import { RecommendationSection } from '@components/RecommendationSection'
 import { Loader } from '@components/Loader'
 

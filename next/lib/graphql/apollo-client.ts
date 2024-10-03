@@ -1,15 +1,16 @@
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
+import { APOLLO_SERVER_URL } from '../../../ENV'
 
 const createApolloClient = () =>
     new ApolloClient({
-        uri: 'http://localhost:3001/api/graphql',
+        uri: APOLLO_SERVER_URL,
         cache: new InMemoryCache(),
         headers: {
             'content-type': 'application/json',
             'apollo-require-preflight': 'true',
         },
         link: new HttpLink({
-            uri: 'http://localhost:3001/api/graphql',
+            uri: APOLLO_SERVER_URL,
             fetchOptions: { mode: 'cors' },
             headers: {
                 'apollo-require-preflight': 'true',

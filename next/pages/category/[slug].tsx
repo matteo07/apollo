@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import Error from 'next/error'
-import { useGetCategoryQuery } from '@lib/graphql/hooks.generated'
+import { useGetCategoryQuery } from '@lib/graphql/generated.hooks'
 import { BookCard } from '@components/BookCard'
 import { Loader } from '@components/Loader'
 

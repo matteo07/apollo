@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import type { ItemFragmentFragment } from '@lib/graphql/operations.generated'
+import type { ItemFragmentFragment } from '@lib/graphql/generated.operations'
 import { authorLink, authorWrapper, cardWrapper, spacer, title } from '@components/BookCard/styles'
 
 export const BookCard = ({ book }: { book: ItemFragmentFragment }) => (

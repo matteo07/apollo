@@ -1,4 +1,4 @@
-import type { GetRecommendationsQuery } from '@lib/graphql/operations.generated'
+import type { GetRecommendationsQuery } from '@lib/graphql/generated.operations'
 import { BookCard } from '@components/BookCard'
 import { booksSection, description, title, wrapper } from './styles'
 
