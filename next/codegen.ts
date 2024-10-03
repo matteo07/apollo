@@ -15,17 +15,17 @@ const config: CodegenConfig = {
             config: { includeDirectives: true },
         },
         'lib/graphql/operations.generated.ts': {
-            preset: 'import-types',
             plugins: ['typescript-operations'],
             config: {
                 includeDirectives: true,
                 // preResolveTypes: false,
                 useTypeImports: true,
             },
+            preset: 'import-types',
             presetConfig: { typesPath: GENERATED_TYPES_PATH },
         },
         'lib/graphql/hooks.generated.ts': {
-            plugins: ['typescript', 'typescript-react-apollo', { add: { content: IMPORT_LINE } }],
+            plugins: ['typescript-react-apollo', { add: { content: IMPORT_LINE } }],
             config: {
                 includeDirectives: true,
                 importOperationTypesFrom: GENERATED_TYPE_NAME,
