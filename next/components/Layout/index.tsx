@@ -1,10 +1,10 @@
-import type {ReactNode} from "react";
-import {useGetCategoriesQuery} from "@lib/graphql/hooks.generated";
-import {Header} from "@components/Header";
-import {pageBgStyle, pageContentStyle} from "./styles";
+import type { ReactNode } from 'react'
+import { useGetCategoriesQuery } from '@lib/graphql/hooks.generated'
+import { Header } from '@components/Header'
+import { pageBgStyle, pageContentStyle } from './styles'
 
-const Layout = ({children}: { children: ReactNode }) => {
-    const {error, loading, data} = useGetCategoriesQuery()
+const Layout = ({ children }: { children: ReactNode }) => {
+    const { error, loading, data } = useGetCategoriesQuery()
     if (error || loading || !data) {
         return null
     }
@@ -12,12 +12,11 @@ const Layout = ({children}: { children: ReactNode }) => {
     return (
         <div style={pageBgStyle}>
             <div style={pageContentStyle}>
-                <Header data={data}/>
-                <div style={{padding: '8px'}}>
-                    {children}
-                </div>
-            </ div>
-        </ div>)
+                <Header data={data} />
+                <div style={{ padding: '8px' }}>{children}</div>
+            </div>
+        </div>
+    )
 }
 
 export default Layout

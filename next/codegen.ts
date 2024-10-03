@@ -1,4 +1,4 @@
-import type {CodegenConfig} from '@graphql-codegen/cli';
+import type { CodegenConfig } from '@graphql-codegen/cli'
 
 export const GENERATED_TYPES_PATH = 'lib/graphql/types.generated'
 export const GENERATED_TYPES_PATH_TS = 'lib/graphql/types.generated' + '.ts'
@@ -12,16 +12,20 @@ const config: CodegenConfig = {
     generates: {
         [GENERATED_TYPES_PATH_TS]: {
             plugins: ['typescript'],
-            config: {includeDirectives: true}
+            config: { includeDirectives: true },
         },
         'lib/graphql/operations.generated.ts': {
             preset: 'import-types',
             plugins: ['typescript-operations'],
-            config: {includeDirectives: true, useTypeImports: true},
-            presetConfig: {typesPath: GENERATED_TYPES_PATH},
+            config: {
+                includeDirectives: true,
+                // preResolveTypes: false,
+                useTypeImports: true,
+            },
+            presetConfig: { typesPath: GENERATED_TYPES_PATH },
         },
         'lib/graphql/hooks.generated.ts': {
-            plugins: ['typescript', 'typescript-react-apollo', {add: {content: IMPORT_LINE}}],
+            plugins: ['typescript', 'typescript-react-apollo', { add: { content: IMPORT_LINE } }],
             config: {
                 includeDirectives: true,
                 importOperationTypesFrom: GENERATED_TYPE_NAME,
@@ -30,9 +34,12 @@ const config: CodegenConfig = {
         },
         'mock.generated.ts': {
             plugins: ['typescript-mock-data'],
-            config: {typesFile: GENERATED_TYPES_PATH_TS}
+            config: { typesFile: GENERATED_TYPES_PATH_TS },
         },
     },
-};
+    hooks: {
+        afterAllFileWrite: ['prettier --write'],
+    },
+}
 
-export default config;
+export default config

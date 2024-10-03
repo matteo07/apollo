@@ -1,4 +1,4 @@
-import type {CodegenConfig} from '@graphql-codegen/cli';
+import type { CodegenConfig } from '@graphql-codegen/cli'
 
 export const GENERATED_TYPE_NAME = `GeneratedTypes`
 export const GENERATED_TYPES_PATH = 'lib/graphql/types.generated.ts'
@@ -10,8 +10,8 @@ const config: CodegenConfig = {
     ignoreNoDocuments: true,
     generates: {
         [GENERATED_TYPES_PATH]: {
-            plugins: ['typescript', 'typescript-operations', {add: {content: IMPORT_LINE}}],
-            config: {includeDirectives: true}
+            plugins: ['typescript', 'typescript-operations', { add: { content: IMPORT_LINE } }],
+            config: { includeDirectives: true },
         },
         'lib/graphql/hooks.generated.ts': {
             plugins: ['typescript', 'typescript-react-apollo'],
@@ -23,9 +23,9 @@ const config: CodegenConfig = {
         },
         'mock.generated.ts': {
             plugins: ['typescript-mock-data'],
-            config: {typesFile: GENERATED_TYPES_PATH},
-        }
-    }
-};
+            config: { typesFile: GENERATED_TYPES_PATH },
+        },
+    },
+}
 
-export default config;
+export default config

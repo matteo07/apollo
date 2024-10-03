@@ -1,4 +1,4 @@
-import type {CSSProperties} from "react";
+import type { CSSProperties } from 'react'
 
 export const cardWrapper: CSSProperties = {
     display: 'flex',
@@ -6,10 +6,10 @@ export const cardWrapper: CSSProperties = {
     border: '2px solid rgb(104, 145, 3)',
     borderRadius: '4px',
     backgroundColor: 'white',
-    padding: "8px 8px"
+    padding: '8px 8px',
 }
 
-export const title: CSSProperties = {display: 'inline-block', fontWeight: 600}
+export const title: CSSProperties = { display: 'inline-block', fontWeight: 600 }
 
 export const authorLink: CSSProperties = {
     cursor: 'pointer',
@@ -17,6 +17,6 @@ export const authorLink: CSSProperties = {
     fontWeight: 600,
 }
 
-export const spacer: CSSProperties = {height: '12px'}
+export const spacer: CSSProperties = { height: '12px' }
 
-export const authorWrapper: CSSProperties = {display: 'inline-block'}
+export const authorWrapper: CSSProperties = { display: 'inline-block' }

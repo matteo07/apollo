@@ -1,11 +1,11 @@
-import type {CSSProperties} from "react";
+import type { CSSProperties } from 'react'
 
-export const headerStyle: CSSProperties = {display: 'flex', margin: "0 auto"}
+export const headerStyle: CSSProperties = { display: 'flex', margin: '0 auto' }
 
 export const sharedLinkStyle = {
     border: '2px solid',
     padding: '8px 16px',
-    transition: "background-color 600ms linear"
+    transition: 'background-color 600ms linear',
 }
 
 export const activeLinkStyle = {
@@ -16,5 +16,5 @@ export const activeLinkStyle = {
 }
 export const nonActiveLinkStyle = {
     ...sharedLinkStyle,
-    borderColor: '#453643'
+    borderColor: '#453643',
 }

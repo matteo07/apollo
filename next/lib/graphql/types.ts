@@ -29,22 +29,21 @@ export type AuthorServiceResponse = {
 export type RootValue = unknown
 
 export interface BookByIdArgument {
-    id: number;
+    id: number
 }
 
 export interface BooksByIdsArgument {
-    ids?: string[];
-    authorId?: number;
+    ids?: string[]
+    authorId?: number
 }
 
 export interface AuthorByIdArgument {
-    id: number;
+    id: number
 }
 
 export interface CategoryBySlugArgument {
-    slug: string;
+    slug: string
 }
 
-export const BOOK_SERVICE_BASE_URL = 'http://localhost:8091/';
-export const CATEGORIZATION_SERVICE_BASE_URL = 'http://localhost:8092/';
-
+export const BOOK_SERVICE_BASE_URL = 'http://localhost:8091/'
+export const CATEGORIZATION_SERVICE_BASE_URL = 'http://localhost:8092/'

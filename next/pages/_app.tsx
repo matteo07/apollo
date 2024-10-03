@@ -1,11 +1,11 @@
-import '../styles/globals.css';
-import type {AppProps} from 'next/app';
-import {ApolloProvider} from '@apollo/client';
-import createApolloClient from '@lib/apollo-client';
-import Layout from "@components/Layout";
+import '../styles/globals.css'
+import type { AppProps } from 'next/app'
+import { ApolloProvider } from '@apollo/client'
+import createApolloClient from '@lib/apollo-client'
+import Layout from '@components/Layout'
 
-const client = createApolloClient();
-const App = ({Component, pageProps}: AppProps) => (
+const client = createApolloClient()
+const App = ({ Component, pageProps }: AppProps) => (
     <ApolloProvider client={client}>
         <Layout>
             <Component {...pageProps} />
@@ -13,4 +13,4 @@ const App = ({Component, pageProps}: AppProps) => (
     </ApolloProvider>
 )
 
-export default App;
+export default App

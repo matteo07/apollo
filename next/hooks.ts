@@ -1,22 +1,20 @@
-import * as Apollo from '@apollo/client';
-import { gql } from '@apollo/client';
-import { Exact, InputMaybe, Scalars } from './types';
+import * as Apollo from '@apollo/client'
+import { gql } from '@apollo/client'
+import { Exact, InputMaybe, Scalars } from './types'
 
-const defaultOptions = {} as const;
+const defaultOptions = {} as const
 export type GetBookQueryVariables = Exact<{
-  bookId?: InputMaybe<Scalars['Int']['input']>;
-}>;
-
+    bookId?: InputMaybe<Scalars['Int']['input']>
+}>
 
 export type GetBookQuery = {
-  __typename?: 'Query',
-  book?: {
-    __typename?: 'Book',
-    title?: string | null,
-    author?: { __typename?: 'Author', firstName?: string | null } | null
-  } | null
-};
-
+    __typename?: 'Query'
+    book?: {
+        __typename?: 'Book'
+        title?: string | null
+        author?: { __typename?: 'Author'; firstName?: string | null } | null
+    } | null
+}
 
 export const GetBookDocument = gql`
     query getBook($bookId: Int) {
@@ -27,7 +25,7 @@ export const GetBookDocument = gql`
             }
         }
     }
-`;
+`
 
 /**
  * __useGetBookQuery__
@@ -46,21 +44,23 @@ export const GetBookDocument = gql`
  * });
  */
 export function useGetBookQuery(baseOptions?: Apollo.QueryHookOptions<GetBookQuery, GetBookQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetBookQuery, GetBookQueryVariables>(GetBookDocument, options);
+    const options = { ...defaultOptions, ...baseOptions }
+    return Apollo.useQuery<GetBookQuery, GetBookQueryVariables>(GetBookDocument, options)
 }
 
 export function useGetBookLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBookQuery, GetBookQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetBookQuery, GetBookQueryVariables>(GetBookDocument, options);
+    const options = { ...defaultOptions, ...baseOptions }
+    return Apollo.useLazyQuery<GetBookQuery, GetBookQueryVariables>(GetBookDocument, options)
 }
 
-export function useGetBookSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetBookQuery, GetBookQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetBookQuery, GetBookQueryVariables>(GetBookDocument, options);
+export function useGetBookSuspenseQuery(
+    baseOptions?: Apollo.SuspenseQueryHookOptions<GetBookQuery, GetBookQueryVariables>,
+) {
+    const options = { ...defaultOptions, ...baseOptions }
+    return Apollo.useSuspenseQuery<GetBookQuery, GetBookQueryVariables>(GetBookDocument, options)
 }
 
-export type GetBookQueryHookResult = ReturnType<typeof useGetBookQuery>;
-export type GetBookLazyQueryHookResult = ReturnType<typeof useGetBookLazyQuery>;
-export type GetBookSuspenseQueryHookResult = ReturnType<typeof useGetBookSuspenseQuery>;
-export type GetBookQueryResult = Apollo.QueryResult<GetBookQuery, GetBookQueryVariables>;
+export type GetBookQueryHookResult = ReturnType<typeof useGetBookQuery>
+export type GetBookLazyQueryHookResult = ReturnType<typeof useGetBookLazyQuery>
+export type GetBookSuspenseQueryHookResult = ReturnType<typeof useGetBookSuspenseQuery>
+export type GetBookQueryResult = Apollo.QueryResult<GetBookQuery, GetBookQueryVariables>

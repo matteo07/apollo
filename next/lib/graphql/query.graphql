@@ -8,7 +8,6 @@ query getBook($bookId: Int!) {
     }
 }
 
-
 fragment ItemFragment on Book {
     id
     title
@@ -48,7 +47,7 @@ query getRecommendations {
     }
 }
 
-query getAuthor ($authorId: Int!) {
+query getAuthor($authorId: Int!) {
     author(id: $authorId) {
         firstName
         lastName

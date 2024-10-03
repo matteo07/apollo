@@ -1,15 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-  webpack: (config, options) => {
-    config.module.rules.push({
-      test: /\.(graphql|gql)/,
-      exclude: /node_modules/,
-      loader: 'graphql-tag/loader'
-    });
-    return config;
-  }
-};
+    reactStrictMode: true,
+    swcMinify: true,
+    webpack: (config, options) => {
+        config.module.rules.push({
+            test: /\.(graphql|gql)/,
+            exclude: /node_modules/,
+            loader: 'graphql-tag/loader',
+        })
+        return config
+    },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
