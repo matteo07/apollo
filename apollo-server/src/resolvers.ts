@@ -1,4 +1,4 @@
-import type {
+import {
     AuthorByIdArgument,
     AuthorServiceResponse,
     Book,
@@ -8,8 +8,9 @@ import type {
     CategoryServiceResponse,
     RecommendationServiceResponse,
     RootValue,
-} from '@lib/graphql/types'
-import { BOOK_SERVICE_BASE_URL, CATEGORIZATION_SERVICE_BASE_URL } from '@lib/graphql/types'
+    BOOK_SERVICE_BASE_URL,
+    CATEGORIZATION_SERVICE_BASE_URL,
+} from './types.js'
 
 const getData = async (path: string, baseUrl: string) => await (await fetch(baseUrl + path)).json()
 
@@ -24,19 +25,20 @@ export const booksResolver = async (_: RootValue, { ids, authorId }: BooksByIdsA
 }
 
 const bookByIdResolver = async (_: RootValue, { id }: BookByIdArgument): Promise<Book | null> =>
-    await getBookServiceData(`book/${id}`)
-const authorByIdResolver = async (_: RootValue, { id }: AuthorByIdArgument): Promise<Book | null> =>
-    await getBookServiceData(`author/${id}`)
+    (await getBookServiceData(`book/${id}`)) as Book
+const authorByIdResolver = async (_: RootValue, { id }: AuthorByIdArgument): Promise<AuthorServiceResponse | null> =>
+    (await getBookServiceData(`author/${id}`)) as AuthorServiceResponse
 
 // CATEGORIZATION SERVICE RESOLVERS
 const categoriesResolver = async (_: RootValue): Promise<CategoryServiceResponse[] | null> =>
-    await getCategorizationServiceData(`category`)
+    (await getCategorizationServiceData(`category`)) as CategoryServiceResponse[]
 const categoryBySlugResolver = async (
     _: RootValue,
     { slug }: CategoryBySlugArgument,
-): Promise<CategoryServiceResponse | null> => await getCategorizationServiceData(`category/${slug}`)
-const recommendationsResolver = async (_: RootValue): Promise<Book | null> =>
-    await getCategorizationServiceData('recommendation')
+): Promise<CategoryServiceResponse | null> =>
+    (await getCategorizationServiceData(`category/${slug}`)) as CategoryServiceResponse
+const recommendationsResolver = async (_: RootValue): Promise<RecommendationServiceResponse | null> =>
+    (await getCategorizationServiceData('recommendation')) as RecommendationServiceResponse
 
 export const resolvers = {
     Query: {

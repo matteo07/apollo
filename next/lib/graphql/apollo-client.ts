@@ -1,24 +1,20 @@
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
 
-const createApolloClient = () => {
-    return new ApolloClient({
-        uri: 'http://localhost:3000/api/graphql',
+const createApolloClient = () =>
+    new ApolloClient({
+        uri: 'http://localhost:3001/api/graphql',
         cache: new InMemoryCache(),
-
         headers: {
             'content-type': 'application/json',
-
             'apollo-require-preflight': 'true',
         },
-
         link: new HttpLink({
-            uri: 'http://localhost:3000/api/graphql',
+            uri: 'http://localhost:3001/api/graphql',
             fetchOptions: { mode: 'cors' },
             headers: {
                 'apollo-require-preflight': 'true',
             },
         }),
     })
-}
 
 export default createApolloClient

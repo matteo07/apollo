@@ -35,4 +35,4 @@ type Query {
     category(slug: String): Category!
     recommendations: [Recommendation!]!
 }
-`
+`;
