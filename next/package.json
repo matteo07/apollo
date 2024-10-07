@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm run codegen && next dev -p 80",
+    "dev": "npm run codegen & next dev -p 80",
     "codegen": "npx graphql-code-generator --config codegen.ts --watch \"src/**/*.graphql\"",
     "build": "next build",
     "start": "next start",
