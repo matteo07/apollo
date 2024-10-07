@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 80",
-    "codegen": "npx graphql-code-generator --config codegen.ts",
+    "dev": "npm run codegen && next dev -p 80",
+    "codegen": "npx graphql-code-generator --config codegen.ts --watch \"src/**/*.graphql\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -28,6 +28,7 @@
     "@graphql-codegen/cli": "^5.0.2",
     "@graphql-codegen/import-types-preset": "^3.0.0",
     "@graphql-codegen/typescript-react-apollo": "^4.3.0",
+    "@parcel/watcher": "^2.4.1",
     "@tanstack/react-query-devtools": "^4.2.1",
     "@types/node": "18.7.4",
     "@types/react": "18.0.17",
