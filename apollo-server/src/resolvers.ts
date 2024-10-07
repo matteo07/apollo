@@ -35,9 +35,14 @@ export const booksResolver = async (_: RootValue, { ids, authorId }: BooksByIdsA
 const bookByIdResolver = async (_: RootValue, { id }: BookByIdArgument): Promise<Book | null> =>
     (await getBookServiceData(`book/${id}`)) as Book
 
-const authorByIdResolver = async (_: RootValue, { id }: AuthorByIdArgument): Promise<AuthorServiceResponse | null> =>
-    (await getBookServiceData(`author/${id}`)) as AuthorServiceResponse
-
+const authorCache: Record<number, AuthorServiceResponse | undefined> = {}
+const authorByIdResolver = async (_: RootValue, { id }: AuthorByIdArgument): Promise<AuthorServiceResponse | null> => {
+    if (authorCache[id] !== undefined) {
+        return authorCache[id]
+    }
+    authorCache[id] = (await getBookServiceData(`author/${id}`)) as AuthorServiceResponse
+    return authorCache[id]
+}
 /*
 --------------------------- CATEGORIZATION SERVICE RESOLVERS ---------------------------
  */
