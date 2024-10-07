@@ -19,7 +19,7 @@ public class RecommendationController {
   public Recommendation[] recommendations() throws InterruptedException {
     System.out.println("GET recommendations");
 
-    Thread.sleep(500);
+    Thread.sleep(300);
     return RECOMMENDATIONS;
   }
 
