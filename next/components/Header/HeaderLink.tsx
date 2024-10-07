@@ -5,8 +5,6 @@ type HeaderLinkProps = { url: string; title: string; active?: boolean }
 
 export const HeaderLink = ({ url, title, active }: HeaderLinkProps) => (
     <div style={active ? activeLinkStyle : nonActiveLinkStyle}>
-        <Link href={url} prefetch>
-            {title}
-        </Link>
+        <Link href={url}>{title}</Link>
     </div>
 )
