@@ -20,6 +20,7 @@ fragment ItemFragment on Book {
 
 query getCategory($categorySlug: String!) {
     category(slug: $categorySlug) {
+        slug
         title
         description
         items {

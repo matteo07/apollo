@@ -73,6 +73,7 @@ export type GetBookQueryResult = Apollo.QueryResult<GeneratedTypes.GetBookQuery,
 export const GetCategoryDocument = gql`
     query getCategory($categorySlug: String!) {
         category(slug: $categorySlug) {
+            slug
             title
             description
             items {

@@ -2,17 +2,23 @@ import {
     AuthorByIdArgument,
     AuthorServiceResponse,
     Book,
+    BOOK_SERVICE_BASE_URL,
     BookByIdArgument,
     BooksByIdsArgument,
+    CATEGORIZATION_SERVICE_BASE_URL,
     CategoryBySlugArgument,
     CategoryServiceResponse,
     RecommendationServiceResponse,
     RootValue,
-    BOOK_SERVICE_BASE_URL,
-    CATEGORIZATION_SERVICE_BASE_URL,
 } from './types.js'
 
-const getData = async (path: string, baseUrl: string) => await (await fetch(baseUrl + path)).json()
+/*
+--------------------------- BOOKS SERVICE RESOLVERS ---------------------------
+ */
+const getData = async (path: string, baseUrl: string) => {
+    console.log('fetching GET ' + baseUrl + path)
+    return await (await fetch(baseUrl + path)).json()
+}
 
 const getBookServiceData = async (path: string) => await getData(path, BOOK_SERVICE_BASE_URL)
 const getCategorizationServiceData = async (path: string) => await getData(path, CATEGORIZATION_SERVICE_BASE_URL)

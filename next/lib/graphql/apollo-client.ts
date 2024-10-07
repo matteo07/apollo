@@ -4,7 +4,13 @@ import { APOLLO_SERVER_URL } from '../../../ENV'
 const createApolloClient = () =>
     new ApolloClient({
         uri: APOLLO_SERVER_URL,
-        cache: new InMemoryCache(),
+        cache: new InMemoryCache({
+            typePolicies: {
+                Category: {
+                    keyFields: ['slug'],
+                },
+            },
+        }),
         headers: {
             'content-type': 'application/json',
             'apollo-require-preflight': 'true',

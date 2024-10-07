@@ -24,6 +24,7 @@ export type GetCategoryQuery = {
     __typename?: 'Query'
     category: {
         __typename?: 'Category'
+        slug: string
         title: string
         description: string
         items: Array<{
