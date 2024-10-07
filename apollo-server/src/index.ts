@@ -9,7 +9,7 @@ const server = new ApolloServer({
 })
 
 const { url } = await startStandaloneServer(server, {
-    listen: { port: 3001, path: '/api/graphql', exclusive: true },
+    listen: { port: 3001 },
 })
 
 console.log(`🚀  Apollo GraphQL Server ready at: ${url}`)

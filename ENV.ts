@@ -1,1 +1,1 @@
-export const APOLLO_SERVER_URL = 'http://localhost:3001/api/graphql';
+export const APOLLO_SERVER_URL = 'http://localhost:3001/graphql';
