@@ -21,7 +21,7 @@ const CategoryPage = () => {
 
     return (
         <>
-            <h3 style={{ fontSize: '20px', fontWeight: '600' }}>{data.category.description}</h3>
+            <h3 style={{ fontSize: '20px', fontWeight: '600', margin: '16px 0' }}>{data.category.description}</h3>
             <div style={{ display: 'flex', gap: '4px' }}>
                 {(data.category?.items ?? []).map((item) => (
                     <BookCard key={item.id} book={item} />
