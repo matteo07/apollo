@@ -9,7 +9,11 @@ export const cardWrapper: CSSProperties = {
     padding: '8px 8px',
 }
 
-export const title: CSSProperties = { display: 'inline-block', fontWeight: 600 }
+export const title: CSSProperties = {
+    display: 'inline-block',
+    fontWeight: 600,
+    cursor: 'pointer',
+}
 
 export const authorLink: CSSProperties = {
     cursor: 'pointer',

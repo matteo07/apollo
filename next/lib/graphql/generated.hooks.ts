@@ -288,11 +288,11 @@ export const GetAuthorDocument = gql`
             lastName
             bio
             books {
-                id
-                title
+                ...ItemFragment
             }
         }
     }
+    ${ItemFragmentFragmentDoc}
 `
 
 /**

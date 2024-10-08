@@ -72,6 +72,11 @@ export type GetAuthorQuery = {
         firstName: string
         lastName: string
         bio: string
-        books: Array<{ __typename?: 'Book'; id: number; title: string }>
+        books: Array<{
+            __typename?: 'Book'
+            id: number
+            title: string
+            author: { __typename?: 'Author'; id?: number | null; firstName: string; lastName: string }
+        }>
     }
 }

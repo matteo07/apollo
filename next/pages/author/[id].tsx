@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import Error from 'next/error'
 import { useGetAuthorQuery } from '@lib/graphql/generated.hooks'
 import { Loader } from '@components/Loader'
+import { BookCard } from '@components/BookCard'
 
 const AuthorPage = () => {
     const { query } = useRouter()
@@ -19,17 +20,18 @@ const AuthorPage = () => {
 
     return (
         <>
-            <h3 style={{ fontSize: '20px', fontWeight: '600' }}>
-                {data.author.firstName} {data.author.lastName}
+            <h3 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '8px' }}>
+                AUTHOR: {data.author.firstName} {data.author.lastName}
             </h3>
             <p>
-                Bio:
-                <br />
-                {data.author.bio}
+                <b>Bio:</b> {data.author.bio}
             </p>
-            <div>
+            <p style={{ fontSize: '12px', fontWeight: '600', margin: '8px 0' }}>
+                List of the books written by this author
+            </p>
+            <div style={{ display: 'flex', gap: '4px' }}>
                 {data.author.books.map((book) => (
-                    <p key={book.title}>{book.title}</p>
+                    <BookCard key={book.id} book={book} />
                 ))}
             </div>
         </>

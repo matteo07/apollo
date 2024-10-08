@@ -4,7 +4,9 @@ import { authorLink, authorWrapper, cardWrapper, spacer, title } from '@componen
 
 export const BookCard = ({ book }: { book: ItemFragmentFragment }) => (
     <div key={book.id} style={cardWrapper}>
-        <h3 style={title}>{book.title}</h3>
+        <Link href={`/book/${book.id}`}>
+            <h3 style={title}>{book.title}</h3>
+        </Link>
         <div style={spacer} />
         <Link href={`/author/${book.author.id}`}>
             <div style={authorWrapper}>
