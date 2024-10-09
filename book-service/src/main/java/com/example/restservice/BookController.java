@@ -12,14 +12,14 @@ import java.util.List;
 public class BookController {
 
   private static final Book[] books = {
-      new Book(1, 1, "The Awakening"),
-      new Book(2, 2, "Squeeze Play"),
-      new Book(3, 3, "Libbro"),
-      new Book(4, 3, "Un libro"),
-      new Book(5, 1, "Lmt enterprise"),
-      new Book(6, 3, "Hendry ponte"),
-      new Book(7, 3, "Paura Potter?"),
-      new Book(8, 2, "Invisible"),
+      new Book(1, 1, "The Awakening", 1899),
+      new Book(2, 1, "The Storm", 1902),
+      new Book(3, 3, "Libro", 2020),
+      new Book(4, 3, "Libro 2", 2022),
+      new Book(5, 1, "Lmt enterprise", 1903),
+      new Book(6, 2, "Harry Potter", 1997),
+      new Book(7, 2, "Fantastic beasts", 2001),
+      new Book(8, 1, "Invisible", 1904),
   };
 
   @GetMapping("/book")
