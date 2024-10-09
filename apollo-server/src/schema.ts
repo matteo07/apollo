@@ -9,6 +9,7 @@ type Author {
 
 type Book {
     id: Int!
+    year: Int!
     title: String!
     author: Author!
 }

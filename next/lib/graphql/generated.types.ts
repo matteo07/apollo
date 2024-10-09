@@ -28,6 +28,7 @@ export type Book = {
     author: Author
     id: Scalars['Int']['output']
     title: Scalars['String']['output']
+    year: Scalars['Int']['output']
 }
 
 export type Category = {

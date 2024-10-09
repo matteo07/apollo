@@ -15,6 +15,7 @@ export const aBook = (overrides?: Partial<Book>): Book => {
         author: overrides && overrides.hasOwnProperty('author') ? overrides.author! : anAuthor(),
         id: overrides && overrides.hasOwnProperty('id') ? overrides.id! : 2537,
         title: overrides && overrides.hasOwnProperty('title') ? overrides.title! : 'vulgaris',
+        year: overrides && overrides.hasOwnProperty('year') ? overrides.year! : 53,
     }
 }
 

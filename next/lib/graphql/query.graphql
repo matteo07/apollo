@@ -1,6 +1,7 @@
 query getBook($bookId: Int!) {
     book(id: $bookId) {
         title
+        year
         author {
             firstName
             lastName

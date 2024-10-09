@@ -17,6 +17,7 @@ export const GetBookDocument = gql`
     query getBook($bookId: Int!) {
         book(id: $bookId) {
             title
+            year
             author {
                 firstName
                 lastName

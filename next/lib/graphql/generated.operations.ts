@@ -6,7 +6,12 @@ export type GetBookQueryVariables = Types.Exact<{
 
 export type GetBookQuery = {
     __typename?: 'Query'
-    book: { __typename?: 'Book'; title: string; author: { __typename?: 'Author'; firstName: string; lastName: string } }
+    book: {
+        __typename?: 'Book'
+        title: string
+        year: number
+        author: { __typename?: 'Author'; firstName: string; lastName: string }
+    }
 }
 
 export type ItemFragmentFragment = {

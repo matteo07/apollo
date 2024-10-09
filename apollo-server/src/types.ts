@@ -2,6 +2,7 @@ export type Book = {
     id: number
     title: string
     author: number
+    year: number
 }
 
 export type CategoryServiceResponse = {

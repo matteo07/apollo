@@ -19,10 +19,16 @@ const AuthorPage = () => {
 
     return (
         <>
-            <h3 style={{ fontSize: '20px', fontWeight: '600' }}>{data.book.title}</h3>
+            <h3 style={{ fontSize: '20px', fontWeight: '600' }}>
+                BOOK DETAILS:
+                <br /> {data.book.title}
+            </h3>
             <p>
-                Author:
-                <br />
+                <b>Year: </b>
+                {data.book.year}
+            </p>
+            <p>
+                <b>Author: </b>
                 {data.book.author.firstName} {data.book.author.lastName}
             </p>
         </>
