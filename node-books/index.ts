@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const port = 8091
 
+const log = (message: string) => console.log(`* BOOK SERVICE CALLED * ${message}`)
+
 const createBook = (id: number, author: number, title: string, year: number) => ({
     id,
     author,
@@ -30,13 +32,12 @@ const books = [
 // BOOKS
 
 app.get('/book', (req, res) => {
-    console.log('GET /book', req.query)
+    log(`GET /book ${JSON.stringify(req.query)}`)
     if (req.query.authorId) {
         res.send(books.filter((book) => book.author.toString() === req.params.authorId)[0])
         return
     }
     if (req.query.ids) {
-        console.log(req.query.ids, JSON.stringify(req.query.ids))
         res.send(books.filter((book) => req.query.ids.split(',').includes(book.author.toString())))
         return
     }
@@ -44,7 +45,7 @@ app.get('/book', (req, res) => {
 })
 
 app.get('/book/:id', (req, res) => {
-    console.log('GET /book:id ' + JSON.stringify(req.params.id))
+    log('GET /book:id ' + JSON.stringify(req.params.id))
     res.send(books.filter((book) => book.id.toString() === req.params.id)[0])
 })
 
@@ -72,16 +73,16 @@ const authors = [
 ]
 
 app.get('/author', (req, res) => {
-    console.log('GET /author')
+    log('GET /author')
     res.send([...authors])
 })
 
 app.get('/author/:id', (req, res) => {
-    console.log('GET /author/:id ' + JSON.stringify(req.params.id))
+    log('GET /author/:id ' + JSON.stringify(req.params.id))
     res.send(authors.filter((author) => author.id.toString() === req.params.id)[0])
 })
 
 // ------------------------------- START SERVER -------------------------------
 app.listen(port, () => {
-    console.log(`Books app listening on port ${port}`)
+    log(`Books app listening on port ${port}`)
 })
