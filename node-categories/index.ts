@@ -50,5 +50,5 @@ app.get('/recommendation', (req, res) => {
 
 // ------------------------------- START SERVER -------------------------------
 app.listen(port, () => {
-    console.log(`Books app listening on port ${port}`)
+    console.log(`Categorization service listening on port ${port}`)
 })
