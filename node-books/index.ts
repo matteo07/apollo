@@ -34,7 +34,7 @@ const books = [
 app.get('/book', (req, res) => {
     log(`GET /book ${JSON.stringify(req.query)}`)
     if (req.query.authorId) {
-        res.send(books.filter((book) => book.author.toString() === req.params.authorId)[0])
+        res.send(books.filter((book) => book.author.toString() === req.query.authorId))
         return
     }
     if (req.query.ids) {
