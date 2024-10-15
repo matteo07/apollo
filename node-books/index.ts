@@ -84,5 +84,5 @@ app.get('/author/:id', (req, res) => {
 
 // ------------------------------- START SERVER -------------------------------
 app.listen(port, () => {
-    log(`Books app listening on port ${port}`)
+    console.log(`Books app listening on port ${port}`)
 })

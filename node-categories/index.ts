@@ -2,18 +2,13 @@ const express = require('express')
 const app = express()
 const port = 8092
 
+const log = (message: string) => console.log(`* CATEGORY SERVICE CALLED * ${message}`)
+
 const createCategory = (slug: string, title: string, description: string, items: number[]) => ({
     slug,
     title,
     description,
     items,
-})
-
-const createAuthor = (id: number, firstName: string, lastName: string, bio: string) => ({
-    id,
-    firstName,
-    lastName,
-    bio,
 })
 
 const categories = [
@@ -26,12 +21,12 @@ const categories = [
 // BOOKS
 
 app.get('/category', (req, res) => {
-    console.log('GET /book', req.query)
+    log('GET /category')
     res.send([...categories])
 })
 
 app.get('/category/:slug', (req, res) => {
-    console.log('GET /book:slug ' + JSON.stringify(req.params.slug))
+    log('GET /category:slug ' + JSON.stringify(req.params.slug))
     res.send(categories.filter((book) => book.slug === req.params.slug)[0])
 })
 
@@ -49,7 +44,7 @@ const recommendations = [
 ]
 
 app.get('/recommendation', (req, res) => {
-    console.log('GET /recommendations', req.query)
+    log('GET /recommendations')
     res.send([...recommendations])
 })
 
