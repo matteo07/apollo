@@ -5,19 +5,16 @@
   "private": true,
   "scripts": {
     "codegen": "npx graphql-code-generator --config codegen.ts --watch \"src/**/*.graphql\"",
-    "dev": "npm run codegen & next dev -p 80",
-    "build": "next build",
-    "start": "next start",
+    "start:dev": "npm run codegen & next dev -p 8080",
+    "start:prod": "next build && next start -p 8080",
     "lint": "next lint"
   },
   "dependencies": {
     "@apollo/client": "^3.11.1",
     "@apollo/server": "^4.10.5",
-    "apollo-server-nextjs": "^3.10.3",
     "graphql": "^16.9.0",
     "graphql-tag": "^2.12.6",
-    "next": "^13.5.7",
-    "next-better-api": "^0.1.5",
+    "next": "^14.2.15",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "superjson": "^1.9.1",
